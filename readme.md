@@ -91,9 +91,9 @@ Formulario agregado:
 
 ####SOLUCIÓN:
 
-####Pseudocódigo Primera Parte
+####Pseudocódigo
 
-1. Necesito un método que me permita agregar el texto ingresado en la nueva lista y que este aparezca como un nuevo div.
+Necesito un método que me permita agregar el texto ingresado en la nueva lista y que este aparezca como un nuevo div.
 
 ###MÉTODO 
 
@@ -170,11 +170,42 @@ Como se puede observar se llaman a las tress funciones: newTool, DeleteForm  y a
 
 Agregamos texto en el Form:
 
-![Imagen](http://2.1m.yt/CinoOii.png "Imagen")
+![Imagen](http://4.1m.yt/5e4bVrR.png "Imagen")
 
 Agregamos hacemos clic en el boton y se crea una lista con el texto ingresado en un nuevo elemento y también el de añadir una tarjeta.
 
-![Imagen](http://2.1m.yt/xqp3nFh.png "Imagen")
+![Imagen](http://2.1m.yt/w7ad_fr.png "Imagen")
+
+
+VERSIÓN 0.0.3
+Una vez agregada la lista, mostrar el mensaje clickeable de "Añadir una lista" al lado de la lista agregada.
+
+####SOLUCIÓN:
+
+####Pseudocódigo
+
+Agregar un nuevo elemento de Lista al costado, para eso usaré la propiedad de crear elementos y en css el display inline-block entre los elementos contenedores.
+
+###MÉTODO
+
+Llamamos a la función en el evento clic del boton como hicimos en la versión dos, y llamamos a la función addNewLista.
+
+```javascript
+
+  	function addNewLista(){
+		var padre = document.getElementById("trello-bodyDos");
+		var list = document.createElement("div");
+		var newLista = padre.appendChild(list);
+		newLista.classList.add("lista");
+		//Nodo elemento
+		var textLista = document.createTextNode("Añadir una tarjeta");
+		var newtextLista = newLista.appendChild(textLista);
+	}
+```
+
+Agregamos texto en el Form:
+
+![Imagen](http://2.1m.yt/B97Ojo.png "Imagen")
 
 
 

@@ -1,14 +1,11 @@
 body{
     background-color: #0079BF;
+    box-sizing: border-box;
 }
 
 /*---generales/utilities---*/
-.d-none{
-    display: none;
-}
-
-.d-block{
-    display: block;
+.d-inlineblock {
+    display: inline-block;
 }
 
 .b-radius{
@@ -26,11 +23,7 @@ header{
     height: 3em;
 }
 
-.logo{
-    width: 6em;
-    margin: 1em;
-    height: auto;
-}
+
 /*---formato de div para agregar---*/
 
 .lista {
@@ -49,17 +42,31 @@ header{
     background-color: #E2E4E6;
     padding: 0.6em;
     font-weight: bold;
+    border: 1px grey solid;
 }
+
 .agregar {
     width: 17em;
     height: 3em;
     margin: 0.6em 0.5em;
-    background-color: #E2E4E6;
+    background-color: white;
     padding: 0.6em;
 }
 
 .agregar:hover{
     background-color: grey;
+}
+
+/*---Trellos body---*/
+
+.trello-body{
+    padding: 0.5em;
+    margin: 0.5em;
+    width: 19em;
+    height: auto;
+    background-color: #E2E4E6;
+    float: left;
+    border-radius: 5px;
 }
 
 /*---formulario---*/

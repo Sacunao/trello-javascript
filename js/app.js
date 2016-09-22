@@ -1,13 +1,11 @@
 window.addEventListener("load", function(){
-   var addForm = document.getElementById("agregarForm");
-   
+   var addForm = document.getElementById("agregarForm"); 
 	addForm.addEventListener("click", function(e) {
 		e.preventDefault();
 		deleteElement();
 		addNewForm();
 
 	});
-    
 });
 
 function deleteElement(){//elimo
@@ -42,6 +40,8 @@ function addNewForm(){
 		newTool();
 		deleteForm();
 		addAgregar();
+		document.getElementById("trello-body").classList.add("trello-body");
+		addNewLista();
 	});
 	//agregando nodo texto dentro del boton 
 	var textBoton = document.createTextNode("Añadir lista");
@@ -68,11 +68,24 @@ function addAgregar(){
 	var padre = document.getElementById("trello-body");
 	var agregar = document.createElement("div");
 	var newAgregar = padre.appendChild(agregar);
+	newAgregar.setAttribute("id","agregando");
 	newAgregar.classList.add("agregar");
 	newAgregar.classList.add("b-radius");
 	//Nodo elemento
 	var textAgregar = document.createTextNode("Añadir una tarjeta");
 	var newtextAgregar = newAgregar.appendChild(textAgregar);
+}
+
+function addNewLista(){
+	var padre = document.getElementById("trello-bodyDos");
+	var list = document.createElement("div");
+	var newLista = padre.appendChild(list);
+	newLista.classList.add("lista");
+	//Nodo elemento
+	var textLista = document.createTextNode("Añadir una tarjeta");
+	var newtextLista = newLista.appendChild(textLista);
+
+
 }
 
 
