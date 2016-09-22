@@ -97,7 +97,7 @@ Formulario agregado:
 
 ###MÉTODO 
 
-Dentro de la función agregar nuevo formulario tenemos que darle un evento clic al boton, ya que al hacer clic este ejecutará los dos procesos de guardar la información del texto ingresado en el input y también debe crear un nuevo elemento
+Dentro de la función agregar nuevo formulario tenemos que darle un evento clic al boton, ya que al hacer clic este ejecutará los dos procesos de guardar la información del texto ingresado en el input y también debe crear un nuevo elemento para añadir nuevas añadidor de tarjetas.
 
 ```javascript
 
@@ -128,6 +128,7 @@ Dentro de la función agregar nuevo formulario tenemos que darle un evento clic 
 			event.preventDefault();
 			newTool();
 			deleteForm();
+			addAgregar();
 		});
 		//agregando nodo texto dentro del boton 
 		var textBoton = document.createTextNode("Añadir tarjeta");
@@ -135,7 +136,7 @@ Dentro de la función agregar nuevo formulario tenemos que darle un evento clic 
 	}
 ```
 
-Como se puede observar se llaman a las dos funciones: newTool y DeleteForm que sirven para crear el nuevo div con el contendio recepcionado por el form y eliminar visualmente el formulario.
+Como se puede observar se llaman a las tress funciones: newTool, DeleteForm  y addAgregar que sirven para crear el nuevo div con el contendio recepcionado por el form y eliminar visualmente el formulario.
 
 ```javascript
 
@@ -154,19 +155,26 @@ Como se puede observar se llaman a las dos funciones: newTool y DeleteForm que s
 		newtool.classList.add("agregar");
 		newtool.classList.add("b-radius");
 	}
+
+	function addAgregar(){
+		var padre = document.getElementById("trello-body");
+		var agregar = document.createElement("div");
+		var newAgregar = padre.appendChild(agregar);
+		newAgregar.classList.add("agregar");
+		newAgregar.classList.add("b-radius");
+		//Nodo elemento
+		var textAgregar = document.createTextNode("Añadir una tarjeta");
+		var newtextAgregar = newAgregar.appendChild(textAgregar);
+	}
 ```
 
 Agregamos texto en el Form:
 
-![Imagen](http://1.1m.yt/rLjK0V.png "Imagen")
+![Imagen](http://2.1m.yt/CinoOii.png "Imagen")
 
-Agregamos hacemos clic en el boton:
+Agregamos hacemos clic en el boton y se crea una lista con el texto ingresado en un nuevo elemento y también el de añadir una tarjeta.
 
-![Imagen](http://3.1m.yt/EJBAKBj.png "Imagen")
-
-Se crea el texto ingresado en un nuevo elemento:
-
-![Imagen](http://1.1m.yt/Tg6bEq9.png "Imagen")
+![Imagen](http://2.1m.yt/xqp3nFh.png "Imagen")
 
 
 
