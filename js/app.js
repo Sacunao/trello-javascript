@@ -18,7 +18,6 @@ function deleteElement(){
 }
 
 function addNewForm(){
-
 	//agregando el form
 	var padre = document.getElementById("trello-body");
 	var form = document.createElement("form");
@@ -33,14 +32,15 @@ function addNewForm(){
 	//agregando boton 
 	var boton = document.createElement("button");
 	var newButton = newForm.appendChild(boton);
-	//newButton.textContent = ¨Añadir tarjeta¨;
+	newButton.setAttribute("id","botonForm");
 	newButton.classList.add("boton");
 	newButton.classList.add("btn");
 	newButton.classList.add("btn-primary");
-	
+	//agregando boton 
+	var textBoton = document.createTextNode("Añadir tarjeta");
+	var newtextBoton = newButton.appendChild(textBoton);
 }
 
-//newForm.setAttribute();
 
 
 
