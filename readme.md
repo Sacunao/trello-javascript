@@ -207,6 +207,23 @@ Agregamos texto en el Form:
 
 ![Imagen](http://2.1m.yt/B97Ojo.png "Imagen")
 
+VERSIÓN 0.0.4
+Al dar click en "Añadir una lista", asegurarse que el input del formulario tenga el focus para poder escribir directamente el nombre de la lista.
+Dar click al mensaje "Añadir una tarjeta" y mostrar e formulario para agregar la tarjeta (Nota: El ingreso de texto es mediante un textarea).
+
+####SOLUCIÓN:
+
+####Pseudocódigo
+Para que el texto del input pueda escribir inmediatamente sin necesidad de hacer clic en él, debemos agregar el método focus.
+
+```javascript
+
+  	newInput.focus(); //nombreDelInput.focus();
+```
+Para mostrar automáticamente el nuevo formulario debemos crear un evento en el div creado de añadir tarjeta y crear un elemento form con sus componentes desde cero, tener en cuenta que no debe ser un input, sino un texarea.
+
+ 
+
 
 
 

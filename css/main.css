@@ -8,8 +8,11 @@ body{
     display: inline-block;
 }
 
-.b-radius{
-    border-radius: 5px;
+.d-none{
+    display: none;
+}
+.d-block{
+    display: block;
 }
 
 .negrita{
@@ -33,6 +36,7 @@ header{
     background-color: #0067A3;
     padding: 0.6em;
     color: white;
+    border-radius: 5px;
 }
 
 .nuevaLista{
@@ -42,7 +46,8 @@ header{
     background-color: #E2E4E6;
     padding: 0.6em;
     font-weight: bold;
-    border: 1px grey solid;
+    border: 1px dimgrey solid;
+    border-radius: 5px;
 }
 
 .agregar {
@@ -51,6 +56,7 @@ header{
     margin: 0.6em 0.5em;
     background-color: white;
     padding: 0.6em;
+    border-radius: 5px;
 }
 
 .agregar:hover{
@@ -75,11 +81,14 @@ header{
     height: 6em;
     margin: 0.6em 0.5em;
     background-color: #E2E4E6;
+    border-radius: 5px;
 }
 .entrada {
     width: 90%;
     margin: 0.3em 0.7em;
     padding: 0.3em;
+    border-radius: 5px;
+
 }
 
 .boton {
@@ -87,5 +96,7 @@ header{
     margin: 0.3em 0.7em;
     background-color: #5BAE45;
     border: none;
+    color: white;
+    border-radius: 5px;
 }
 
