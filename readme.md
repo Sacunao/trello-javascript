@@ -167,7 +167,7 @@ Agregamos texto en el Form:
 
 Agregamos hacemos clic en el boton y se crea una lista con el texto ingresado en un nuevo elemento y también el de añadir una tarjeta.
 
-![Imagen](http://2.1m.yt/w7ad_fr.png "Imagen")
+![Imagen](http://3.1m.yt/Czls6H2.png "Imagen")
 
 
 VERSIÓN 0.0.3

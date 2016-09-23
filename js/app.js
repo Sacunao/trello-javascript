@@ -29,7 +29,7 @@ function addNewForm(elemento){
 	//agregando boton del form
 	var boton = document.createElement("button");
 	form.appendChild(boton);
-	boton.setAttribute("id","botonForm");
+	boton.setAttribute("id","boton");
 	boton.classList.add("boton");
 	boton.addEventListener("click",function(event){
 		event.preventDefault();
@@ -68,8 +68,7 @@ function addAgregar(elemento){
 	agregar.classList.add("agregar");
 	//Nodo elemento
 	var textAgregar = document.createTextNode("Añadir una tarjeta");
-	agregar.appendChild(textAgregar);
-	
+	agregar.appendChild(textAgregar);	
 }
 
 function addNewLista(){
