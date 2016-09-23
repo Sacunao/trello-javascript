@@ -37,8 +37,8 @@ function addNewForm(elemento){
 		deleteForm(elemento);
 		addAgregar(elemento);
 		elemento.parentElement.classList.add("trello-body");
-		// document.getElementById("agregarForm").classList.add("d-none");
-		// document.getElementById("nuevoForm").classList.add("d-none");
+		//document.getElementById("agregarForm").classList.add("d-none");
+		//document.getElementById("nuevoForm").classList.add("d-none");
 		addNewLista(elemento);
 	});
 	//agregando nodo texto dentro del boton 
@@ -69,6 +69,7 @@ function addAgregar(elemento){
 	//Nodo elemento
 	var textAgregar = document.createTextNode("Añadir una tarjeta");
 	agregar.appendChild(textAgregar);
+	
 }
 
 function addNewLista(){

@@ -23,7 +23,12 @@ body{
 
 header{
     background-color: #0067A3;
-    height: 3em;
+    height: auto;
+    text-align: center;
+    color: white;
+    font-size: 2em;
+    font-weight: 600;
+    padding: 0.4em;
 }
 
 

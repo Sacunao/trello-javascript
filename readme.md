@@ -31,46 +31,41 @@ Un elemento en el HTML con el mensaje "Añadir una lista", que al dar click mues
 
 ```javascript
 
-  	window.addEventListener("load", function() {
-    var addForm = document.getElementById("agregarForm");
-    
+  	window.addEventListener("load", function(){
+   var addForm = document.getElementById("agregarForm"); 
 	addForm.addEventListener("click", function(e) {
-		event.preventDefault();
+		e.preventDefault();
+		addNewForm(this);
 		deleteElement();
-		addNewForm();
+
 	});
-    
 });
 
 function deleteElement(){
-	var padre = document.getElementById("trello-body");
-	var elementToRemove = document.getElementById("agregarForm");
-	return padre.removeChild(elementToRemove);
+	var ocultar = document.getElementById("agregarForm");
+	ocultar.classList.add("d-none");
 }
 
-function addNewForm(){
+function addNewForm(elemento){
 	//agregando el form
-	var padre = document.getElementById("trello-body");
+	var padre = elemento.parentElement;
 	var form = document.createElement("form");
-	var newForm = padre.appendChild(form);
-	newForm.classList.add("formulario");
-	newForm.classList.add("b-radius");
+	padre.appendChild(form);
+	form.classList.add("formulario");
 	//agregando input del form
 	var input = document.createElement("input");
-	var newInput = newForm.appendChild(input);
-	newInput.classList.add("entrada");
-	newInput.classList.add("b-radius");
-	//agregando boton 
+	form.appendChild(input);
+	input.focus();
+	input.classList.add("entrada");
+	//agregando boton del form
 	var boton = document.createElement("button");
-	var newButton = newForm.appendChild(boton);
-	newButton.setAttribute("id","botonForm");
-	newButton.classList.add("boton");
-	newButton.classList.add("btn");
-	newButton.classList.add("btn-primary");
-	//agregando boton 
-	var textBoton = document.createTextNode("Añadir tarjeta");
-	var newtextBoton = newButton.appendChild(textBoton);
+	form.appendChild(boton);
+	boton.classList.add("boton");
+	//agregando nodo texto dentro del boton 
+	var textBoton = document.createTextNode("Añadir lista");
+	boton.appendChild(textBoton);
 }
+
 ```
 
 Div de agregar tarjeta, antes y con efecto de hover:
@@ -101,70 +96,68 @@ Dentro de la función agregar nuevo formulario tenemos que darle un evento clic 
 
 ```javascript
 
-  	function addNewForm(){
+	function addNewForm(elemento){
 		//agregando el form
-		var padre = document.getElementById("trello-body");
+		var padre = elemento.parentElement;
 		var form = document.createElement("form");
-		var newForm = padre.appendChild(form);
-		newForm.setAttribute("id","nuevoForm");
-		newForm.classList.add("formulario");
-		newForm.classList.add("b-radius");
+		padre.appendChild(form);
+		form.setAttribute("id","nuevoForm");
+		form.classList.add("formulario");
 		//agregando input del form
 		var input = document.createElement("input");
-		var newInput = newForm.appendChild(input);
-		newInput.setAttribute("id","inputForm");
-		newInput.classList.add("entrada");
-		newInput.classList.add("b-radius");
+		form.appendChild(input);
+		input.setAttribute("id","inputForm");
+		input.focus();
+		input.classList.add("entrada");
 		//agregando boton del form
 		var boton = document.createElement("button");
-		var newButton = newForm.appendChild(boton);
-		newButton.setAttribute("id","botonForm");
-		newButton.classList.add("boton");
-		newButton.classList.add("btn");
-		newButton.classList.add("btn-primary");
-
-		//EVENTO PARA CREAR LISTA DE TAREA
-		newButton.addEventListener("click",function(event){
+		form.appendChild(boton);
+		boton.setAttribute("id","botonForm");
+		boton.classList.add("boton");
+		boton.addEventListener("click",function(event){
 			event.preventDefault();
-			newTool();
-			deleteForm();
-			addAgregar();
+			newTool(elemento); 
+			deleteForm(elemento);
+			addAgregar(elemento);
+			elemento.parentElement.classList.add("trello-body");
+			// document.getElementById("agregarForm").classList.add("d-none");
+			// document.getElementById("nuevoForm").classList.add("d-none");
+			addNewLista(elemento);
 		});
 		//agregando nodo texto dentro del boton 
-		var textBoton = document.createTextNode("Añadir tarjeta");
-		var newtextBoton = newButton.appendChild(textBoton);
+		var textBoton = document.createTextNode("Añadir lista");
+		boton.appendChild(textBoton);
 	}
+
 ```
 
 Como se puede observar se llaman a las tress funciones: newTool, DeleteForm  y addAgregar que sirven para crear el nuevo div con el contendio recepcionado por el form y eliminar visualmente el formulario.
 
 ```javascript
 
-  	function deleteForm(){
-		var padre = document.getElementById("trello-body");
-		var elementToRemove = document.getElementById("nuevoForm");
-		padre.removeChild(elementToRemove);
+  	function deleteForm(elemento){
+	var elementToRemove = document.getElementById("nuevoForm");
+		elementToRemove.classList.add("d-none");
 	}
 
-	function newTool(){
+	function newTool(elemento){
 		var text = document.getElementById("inputForm").value;
-		var padre = document.getElementById("trello-body");
+		var padre = elemento.parentElement;
 		var tool = document.createElement("div");
-		var newtool = padre.appendChild(tool);
-		newtool.textContent = text;
-		newtool.classList.add("agregar");
-		newtool.classList.add("b-radius");
+		padre.appendChild(tool);
+		tool.textContent = text;
+		tool.classList.add("nuevaLista");
 	}
 
-	function addAgregar(){
-		var padre = document.getElementById("trello-body");
+	function addAgregar(elemento){
+		var padre = elemento.parentElement;
 		var agregar = document.createElement("div");
-		var newAgregar = padre.appendChild(agregar);
-		newAgregar.classList.add("agregar");
-		newAgregar.classList.add("b-radius");
+		padre.appendChild(agregar);
+		agregar.setAttribute("id","agregando");
+		agregar.classList.add("agregar");
 		//Nodo elemento
 		var textAgregar = document.createTextNode("Añadir una tarjeta");
-		var newtextAgregar = newAgregar.appendChild(textAgregar);
+		agregar.appendChild(textAgregar);
 	}
 ```
 
@@ -192,14 +185,14 @@ Llamamos a la función en el evento clic del boton como hicimos en la versión d
 
 ```javascript
 
-  	function addNewLista(){
-		var padre = document.getElementById("trello-bodyDos");
-		var list = document.createElement("div");
-		var newLista = padre.appendChild(list);
-		newLista.classList.add("lista");
-		//Nodo elemento
-		var textLista = document.createTextNode("Añadir una tarjeta");
-		var newtextLista = newLista.appendChild(textLista);
+	function addNewLista(){
+		var contenedor = document.getElementById("contenedor");
+		var padre = document.createElement("section");
+		contenedor.appendChild(padre);
+		padre.classList.add("d-inlineblock");
+		var aparecer = document.getElementById("agregarForm");
+		aparecer.classList.add("d-block");
+		padre.appendChild(aparecer);
 	}
 ```
 
@@ -222,7 +215,9 @@ Para que el texto del input pueda escribir inmediatamente sin necesidad de hacer
 ```
 Para mostrar automáticamente el nuevo formulario debemos crear un evento en el div creado de añadir tarjeta y crear un elemento form con sus componentes desde cero, tener en cuenta que no debe ser un input, sino un texarea.
 
- 
+
+
+
 
 
 
