@@ -4,7 +4,6 @@ window.addEventListener("load", function(){
 		e.preventDefault();
 		addNewForm(this);
 		deleteElement();
-
 	});
 });
 
@@ -81,4 +80,3 @@ function addNewLista(){
 	aparecer.classList.add("d-block");
 	padre.appendChild(aparecer);
 }
-

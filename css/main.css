@@ -59,6 +59,15 @@ header{
     width: 17em;
     height: 3em;
     margin: 0.6em 0.5em;
+    background-color: #E2E4E6;
+    padding: 0.6em;
+    border-radius: 5px;
+}
+
+.text-tarjetas {
+    width: 17em;
+    height: 3em;
+    margin: 0.6em 0.5em;
     background-color: white;
     padding: 0.6em;
     border-radius: 5px;
@@ -76,8 +85,9 @@ header{
     width: 19em;
     height: auto;
     background-color: #E2E4E6;
-    float: left;
+    vertical-align: top;
     border-radius: 5px;
+    display: inline-block;
 }
 
 /*---formulario---*/
