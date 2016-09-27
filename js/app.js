@@ -1,66 +1,84 @@
-window.addEventListener("load",function(){
-	var nuevaLista = document.getElementById("nuevaLista");
-	var boton = document.getElementById("boton");
-	var texto = document.getElementById("texto");
-	var content = document.getElementById("content");
-	var form = document.getElementById("form");
-	var contenedor = document.getElementById("contenedor");
-	nuevaLista.addEventListener("click",function(e){
+window.addEventListener("load", function(){
+   var addForm = document.getElementById("agregarForm"); 
+	addForm.addEventListener("click", function(e) {
 		e.preventDefault();
-		showForm();
-		texto.focus();
+		addNewForm(this);
+		deleteElement();
+
 	});
-	boton.addEventListener("click",function(e){
-		e.preventDefault();
-		showList();
-		texto.value = "";
-	});
-	function showForm(){
-		content.style.display = "inline-block";
-		nuevaLista.style.display = "none";
-		form.style.display = "inline-block";
-	}
-	function showList(){
-		content.style.display = "none";
-		nuevaLista.style.display = "inline-block";
-		var lista = document.createElement("div");
-		var nodo = document.createTextNode(texto.value);
-		lista.classList.add("textBold");
-		lista.appendChild(nodo);
-		lista.classList.add("lista");
-		contenedor.insertBefore(lista,nuevaLista.previousSibling);
-		lista.style.display = "inline-block";
-		lista.style.cssFloat = "left";
-		var nuevaTarjeta = document.createElement("a");
-		nuevaTarjeta.href= "#";
-		var nodoTarjeta =document.createTextNode("Añadir una tarjeta ...")
-		nuevaTarjeta.appendChild(nodoTarjeta);
-		lista.appendChild(nuevaTarjeta);
-		nuevaTarjeta.classList.add("tarjeta");
-		nuevaTarjeta.addEventListener("click", function(){
-			nuevaTarjeta.style.display = "none";
-			var area = document.createElement("textarea");
-			area.classList.add("areaTexto");
-			lista.appendChild(area);
-			lista.insertBefore(area,nodo.nextSibling);
-			var nuevoBoton = document.createElement("button");
-			var nodoBoton = document.createTextNode("Añadir");
-			nuevoBoton.classList.add("nuevoBoton");
-			nuevoBoton.appendChild(nodoBoton);
-			lista.appendChild(nuevoBoton);
-			lista.insertBefore(nuevoBoton,area.nextSibling);
-		nuevoBoton.addEventListener("click",function(){
-			area.style.display= "none";
-			nuevoBoton.style.display="none";
-			nuevaTarjeta.style.display="block"
-			var listaTarjeta = document.createElement("textarea");
-			listaTarjeta.focus();
-			var nodoListTarjeta = document.createTextNode(area.value);
-			listaTarjeta.classList.add("areaTarjeta");
-			listaTarjeta.appendChild(nodoListTarjeta);
-			lista.appendChild(listaTarjeta);
-			lista.insertBefore(listaTarjeta,nodo.nextSibling);
-		}); 
-		});
-	}
 });
+
+function deleteElement(){
+	var ocultar = document.getElementById("agregarForm");
+	ocultar.classList.add("d-none");
+}
+
+function addNewForm(elemento){
+	//agregando el form
+	var padre = elemento.parentElement;
+	var form = document.createElement("form");
+	padre.appendChild(form);
+	form.setAttribute("id","nuevoForm");
+	form.classList.add("formulario");
+	//agregando input del form
+	var input = document.createElement("input");
+	form.appendChild(input);
+	input.setAttribute("id","inputForm");
+	input.focus();
+	input.classList.add("entrada");
+	//agregando boton del form
+	var boton = document.createElement("button");
+	form.appendChild(boton);
+	boton.setAttribute("id","botonForm");
+	boton.classList.add("boton");
+	boton.addEventListener("click",function(event){
+		event.preventDefault();
+		newTool(elemento); 
+		deleteForm(elemento);
+		addAgregar(elemento);
+		elemento.parentElement.classList.add("trello-body");
+		//document.getElementById("agregarForm").classList.add("d-none");
+		//document.getElementById("nuevoForm").classList.add("d-none");
+		addNewLista(elemento);
+	});
+	//agregando nodo texto dentro del boton 
+	var textBoton = document.createTextNode("Añadir lista");
+	boton.appendChild(textBoton);
+}
+
+function deleteForm(elemento){
+	var elementToRemove = document.getElementById("nuevoForm");
+	elementToRemove.classList.add("d-none");
+}
+
+function newTool(elemento){
+	var text = document.getElementById("inputForm").value;
+	var padre = elemento.parentElement;
+	var tool = document.createElement("div");
+	padre.appendChild(tool);
+	tool.textContent = text;
+	tool.classList.add("nuevaLista");
+}
+
+function addAgregar(elemento){
+	var padre = elemento.parentElement;
+	var agregar = document.createElement("div");
+	padre.appendChild(agregar);
+	agregar.setAttribute("id","agregando");
+	agregar.classList.add("agregar");
+	//Nodo elemento
+	var textAgregar = document.createTextNode("Añadir una tarjeta");
+	agregar.appendChild(textAgregar);
+	
+}
+
+function addNewLista(){
+	var contenedor = document.getElementById("contenedor");
+	var padre = document.createElement("section");
+	contenedor.appendChild(padre);
+	padre.classList.add("d-inlineblock");
+	var aparecer = document.getElementById("agregarForm");
+	aparecer.classList.add("d-block");
+	padre.appendChild(aparecer);
+}
+
