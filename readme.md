@@ -15,56 +15,25 @@ Un elemento en el HTML con el mensaje "Añadir una lista", que al dar click mues
 
 ```javascript
 
-  	window.addEventListener("load", function() {
-    var agregarFormulario = document.getElementById("agregarForm");
-    var NuevoFormulario = document.getElementById("nuevoForm");
-    var addForm = document.getElementById("agregarForm");
-    
-    addForm.addEventListener("click", function() {
-        agregarFormulario.classList.add("d-none");
-        NuevoFormulario.classList.add("d-block");
+  	window.addEventListener("load", function(){
+	var agregarForm = document.getElementById("agregarForm");
+	var nuevoForm = document.getElementById("nuevoForm");
+
+	/*Declaramos funciones globales de las variables que utilizaremos
+	en mis funnciones reutilizables*/
+	agregarForm.addEventListener("click", function(){
+		hideElement(nuevoForm,agregarForm);
+		input.focus();
+		input.value="";
 	});
-});
+
+	function hideElement(a,b){
+		a.classList.toggle("d-none");
+		b.classList.toggle("d-none");
+	}
 ```
 
-###MÉTODO DOS
-
-```javascript
-
-  	window.addEventListener("load", function(){
-   var addForm = document.getElementById("agregarForm"); 
-	addForm.addEventListener("click", function(e) {
-		e.preventDefault();
-		addNewForm(this);
-		deleteElement();
-
-	});
-});
-
-function deleteElement(){
-	var ocultar = document.getElementById("agregarForm");
-	ocultar.classList.add("d-none");
-}
-
-function addNewForm(elemento){
-	//agregando el form
-	var padre = elemento.parentElement;
-	var form = document.createElement("form");
-	padre.appendChild(form);
-	form.classList.add("formulario");
-	//agregando input del form
-	var input = document.createElement("input");
-	form.appendChild(input);
-	input.focus();
-	input.classList.add("entrada");
-	//agregando boton del form
-	var boton = document.createElement("button");
-	form.appendChild(boton);
-	boton.classList.add("boton");
-	//agregando nodo texto dentro del boton 
-	var textBoton = document.createTextNode("Añadir lista");
-	boton.appendChild(textBoton);
-}
+Se crea una función con parámetros que permtían reutilizar de nuevo, ya que en los futuros casos se puede utilizar la función hideElement() para ocultar los elementos.
 
 ```
 
