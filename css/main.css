@@ -73,10 +73,6 @@ header{
     border-radius: 5px;
 }
 
-.agregar:hover{
-    background-color: grey;
-}
-
 /*---Trellos body---*/
 
 .trello-body{
@@ -107,7 +103,7 @@ header{
 
 .boton {
     display: block;
-    padding: 0.5em 6.2em;
+    padding: 0.5em 6.5em;
     margin: 0.3em 0.7em;
     background-color: #5BAE45;
     border: none;
@@ -116,7 +112,7 @@ header{
 }
 
 .textarea{
-    width: 90%;
+    width: 92%;
     margin: 0.3em 0.7em;
     padding: 0.3em;
     border-radius: 5px;
