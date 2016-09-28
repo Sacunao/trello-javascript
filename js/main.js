@@ -1,3 +1,4 @@
+//Método con mitad de elementos creados y ocultos de index
 window.addEventListener("load", function(){
 	var agregarForm = document.getElementById("agregarForm");
 	var button = document.getElementById("button");
@@ -5,6 +6,8 @@ window.addEventListener("load", function(){
 	var nuevoForm = document.getElementById("nuevoForm");
 	var contenedor = document.getElementById("contenedor");
 
+	/*Declaramos funciones globales de las variables que utilizaremos
+	en mis funnciones reutilizables*/
 	agregarForm.addEventListener("click", function(){
 		hideElement(nuevoForm,agregarForm);
 		input.focus();
@@ -21,7 +24,6 @@ window.addEventListener("load", function(){
 		contenedor.appendChild(contenedorLista);
 		contenedorLista.appendChild(nuevoForm);
 		contenedorLista.appendChild(agregarForm);
-
 		remover.remove();
 
 		var contenedorTarjetas = document.createElement("div");
@@ -33,8 +35,13 @@ window.addEventListener("load", function(){
 		crearElementos("div", "nuevaLista", input.value, contenedorTarjetas);
 		crearElementos("div", "agregar", "Añadir una tarjeta", contenedorTarjetas);
 
-		var agregar= document.querySelectorAll(".agregar");
-
+		/*Para que el form del texarea aparezca debemos aplicar a todos 
+		los divs de agregar tarjeta el mismo formato, por eso le aplicamos
+		a su clase*/ 
+		//el resultado será un array de elementos con la misma clase
+		var agregar = document.getElementsByClassName("agregar");
+		/* var agregar= document.querySelectorAll(".agregar"); puede usarse, pero de
+		preferencia se utiliza el Classname por temas de compatilidad.*/
 		for(var i = 0; i < agregar.length; i++){
 			agregar[i].addEventListener("click", function(){
 				this.classList.add("d-none");

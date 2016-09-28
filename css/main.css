@@ -22,6 +22,8 @@ body{
 /*----header-----*/
 
 header{
+    width: 100%;   
+    position: fixed;
     background-color: #0067A3;
     height: auto;
     text-align: center;
@@ -31,7 +33,12 @@ header{
     padding: 0.4em;
 }
 
+/*----------Contenedor--------------*/
+#contenedor{
+    white-space: nowrap;
+    padding-top: 56px;
 
+}
 /*---formato de div para agregar---*/
 
 .lista {
@@ -83,7 +90,6 @@ header{
     padding: 0.5em;
     margin: 0.5em;
     width: 19em;
-    height: auto;
     background-color: #E2E4E6;
     vertical-align: top;
     border-radius: 5px;
@@ -93,8 +99,9 @@ header{
 /*---formulario---*/
 .formulario {
     width: 17em;
-    height: 6em;
+    height: auto;
     margin: 0.6em 0.5em;
+    padding: 0.3em;
     background-color: #E2E4E6;
     border-radius: 5px;
 }
@@ -103,10 +110,10 @@ header{
     margin: 0.3em 0.7em;
     padding: 0.3em;
     border-radius: 5px;
-
 }
 
 .boton {
+    display: block;
     padding: 0.5em 5.1em;
     margin: 0.3em 0.7em;
     background-color: #5BAE45;
@@ -115,3 +122,9 @@ header{
     border-radius: 5px;
 }
 
+.textarea{
+    width: 90%;
+    margin: 0.3em 0.7em;
+    padding: 0.3em;
+    border-radius: 5px;
+}

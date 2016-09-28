@@ -1,3 +1,5 @@
+//Método creando elementos desde cero
+//Se que ruido visual, pero conservarlo como referencia
 window.addEventListener("load", function(){
    var addForm = document.getElementById("agregarForm"); 
 	addForm.addEventListener("click", function(e) {
