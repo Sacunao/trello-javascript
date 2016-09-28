@@ -35,7 +35,6 @@ Un elemento en el HTML con el mensaje "Añadir una lista", que al dar click mues
 
 Se crea una función con parámetros que permtían reutilizar de nuevo, ya que en los futuros casos se puede utilizar la función hideElement() para ocultar los elementos.
 
-```
 
 Div de agregar tarjeta, antes y con efecto de hover:
 
@@ -63,71 +62,46 @@ Necesito un método que me permita agregar el texto ingresado en la nueva lista 
 
 Dentro de la función agregar nuevo formulario tenemos que darle un evento clic al boton, ya que al hacer clic este ejecutará los dos procesos de guardar la información del texto ingresado en el input y también debe crear un nuevo elemento para añadir nuevas añadidor de tarjetas.
 
-```javascript
-
-	function addNewForm(elemento){
-		//agregando el form
-		var padre = elemento.parentElement;
-		var form = document.createElement("form");
-		padre.appendChild(form);
-		form.setAttribute("id","nuevoForm");
-		form.classList.add("formulario");
-		//agregando input del form
-		var input = document.createElement("input");
-		form.appendChild(input);
-		input.setAttribute("id","inputForm");
-		input.focus();
-		input.classList.add("entrada");
-		//agregando boton del form
-		var boton = document.createElement("button");
-		form.appendChild(boton);
-		boton.setAttribute("id","botonForm");
-		boton.classList.add("boton");
-		boton.addEventListener("click",function(event){
-			event.preventDefault();
-			newTool(elemento); 
-			deleteForm(elemento);
-			addAgregar(elemento);
-			elemento.parentElement.classList.add("trello-body");
-			// document.getElementById("agregarForm").classList.add("d-none");
-			// document.getElementById("nuevoForm").classList.add("d-none");
-			addNewLista(elemento);
-		});
-		//agregando nodo texto dentro del boton 
-		var textBoton = document.createTextNode("Añadir lista");
-		boton.appendChild(textBoton);
-	}
+Se utiliza una función reutilizable con parametros que nos permitan agregar un form con elementos elegidos. luego de que aparezca debe poder llenarse los datos y aparecer el elemento nuevo que contenga el texto ingresado.
 
 ```
+javascript
 
-Como se puede observar se llaman a las tress funciones: newTool, DeleteForm  y addAgregar que sirven para crear el nuevo div con el contendio recepcionado por el form y eliminar visualmente el formulario.
+	var agregarForm = document.getElementById("agregarForm");
+    button.addEventListener("click", function(e){
+		e.preventDefault();
+		var contenedorLista = document.createElement("div");
+		contenedorLista.classList.add("d-inlineblock");
+        
+        var remover = nuevoForm.parentNode;
+		contenedor.appendChild(contenedorLista);
+		contenedorLista.appendChild(nuevoForm);
+		contenedorLista.appendChild(agregarForm);
+		remover.remove();
 
-```javascript
+	});
+    
+    function newForm(form, clase, contenedor, agregarTarjeta){
+		var form = document.createElement(form);
+		form.classList.add(clase);
+		crearElementos("textarea","textarea","", form);
+		crearElementos("button", "boton", "Agregar", form);
+		contenedor.appendChild(form);
 
-  	function deleteForm(elemento){
-	var elementToRemove = document.getElementById("nuevoForm");
-		elementToRemove.classList.add("d-none");
-	}
+		form.lastElementChild.addEventListener("click", function(e){
+			e.preventDefault();
+			agregarTarjeta.classList.remove("d-none");
+			form.classList.add("d-none");
 
-	function newTool(elemento){
-		var text = document.getElementById("inputForm").value;
-		var padre = elemento.parentElement;
-		var tool = document.createElement("div");
-		padre.appendChild(tool);
-		tool.textContent = text;
-		tool.classList.add("nuevaLista");
-	}
+			var text = form.firstElementChild.value;
 
-	function addAgregar(elemento){
-		var padre = elemento.parentElement;
-		var agregar = document.createElement("div");
-		padre.appendChild(agregar);
-		agregar.setAttribute("id","agregando");
-		agregar.classList.add("agregar");
-		//Nodo elemento
-		var textAgregar = document.createTextNode("Añadir una tarjeta");
-		agregar.appendChild(textAgregar);
-	}
+			var div = document.createElement("div");
+			div.classList.add("text-tarjetas");
+			div.innerHTML= text;
+			contenedor.insertBefore(div, agregarTarjeta);
+		});
+	};
+
 ```
 
 Agregamos texto en el Form:
@@ -146,23 +120,34 @@ Una vez agregada la lista, mostrar el mensaje clickeable de "Añadir una lista" 
 
 ####Pseudocódigo
 
-Agregar un nuevo elemento de Lista al costado, para eso usaré la propiedad de crear elementos y en css el display inline-block entre los elementos contenedores.
+Agregar un nuevo elemento de Lista al costado, para eso usaré la propiedad de crear elementos y en css el display inline-block entre los elementos contenedores. A partir de la línea 143, se muestra coo agregamos el nuevo elemento a un nuevo contenedor de forma sucesiva.
 
 ###MÉTODO
 
-Llamamos a la función en el evento clic del boton como hicimos en la versión dos, y llamamos a la función addNewLista.
+Llamamos a la función en el evento clic del boton.
 
 ```javascript
 
-	function addNewLista(){
-		var contenedor = document.getElementById("contenedor");
-		var padre = document.createElement("section");
-		contenedor.appendChild(padre);
-		padre.classList.add("d-inlineblock");
-		var aparecer = document.getElementById("agregarForm");
-		aparecer.classList.add("d-block");
-		padre.appendChild(aparecer);
-	}
+	button.addEventListener("click", function(e){
+		e.preventDefault();
+		var contenedorLista = document.createElement("div");
+		contenedorLista.classList.add("d-inlineblock");
+        
+		var remover = nuevoForm.parentNode;
+		contenedor.appendChild(contenedorLista);
+		contenedorLista.appendChild(nuevoForm);
+		contenedorLista.appendChild(agregarForm);
+		remover.remove();
+
+		var contenedorTarjetas = document.createElement("div");
+		contenedorTarjetas.classList.add("trello-body");
+		contenedor.insertBefore(contenedorTarjetas,contenedor.lastElementChild);
+
+		hideElement(nuevoForm,agregarForm);
+
+		crearElementos("div", "nuevaLista", input.value, contenedorTarjetas);
+		crearElementos("div", "agregar", "Añadir una tarjeta", contenedorTarjetas);
+	});
 ```
 
 Agregamos texto en el Form:
@@ -182,7 +167,7 @@ Para que el texto del input pueda escribir inmediatamente sin necesidad de hacer
 
   	newInput.focus(); //nombreDelInput.focus();
 ```
-Para mostrar automáticamente el nuevo formulario debemos crear un evento en el div creado de añadir tarjeta y crear un elemento form con sus componentes desde cero, tener en cuenta que no debe ser un input, sino un texarea.
+Para mostrar automáticamente el nuevo formulario debemos crear un evento en el div creado de añadir tarjeta y crear un elemento form con sus componentes, tener en cuenta que no debe ser un input, sino un texarea.
 
 
 

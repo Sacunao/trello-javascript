@@ -18,9 +18,8 @@ window.addEventListener("load", function(){
 		e.preventDefault();
 		var contenedorLista = document.createElement("div");
 		contenedorLista.classList.add("d-inlineblock");
-
+        
 		var remover = nuevoForm.parentNode;
-
 		contenedor.appendChild(contenedorLista);
 		contenedorLista.appendChild(nuevoForm);
 		contenedorLista.appendChild(agregarForm);
