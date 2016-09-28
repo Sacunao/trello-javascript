@@ -114,6 +114,7 @@ Agregamos hacemos clic en el boton y se crea una lista con el texto ingresado en
 
 
 VERSIÓN 0.0.3
+
 Una vez agregada la lista, mostrar el mensaje clickeable de "Añadir una lista" al lado de la lista agregada.
 
 ####SOLUCIÓN:
@@ -155,6 +156,7 @@ Agregamos texto en el Form:
 ![Imagen](http://2.1m.yt/B97Ojo.png "Imagen")
 
 VERSIÓN 0.0.4
+
 Al dar click en "Añadir una lista", asegurarse que el input del formulario tenga el focus para poder escribir directamente el nombre de la lista.
 Dar click al mensaje "Añadir una tarjeta" y mostrar e formulario para agregar la tarjeta (Nota: El ingreso de texto es mediante un textarea).
 
@@ -167,9 +169,116 @@ Para que el texto del input pueda escribir inmediatamente sin necesidad de hacer
 
   	newInput.focus(); //nombreDelInput.focus();
 ```
-Para mostrar automáticamente el nuevo formulario debemos crear un evento en el div creado de añadir tarjeta y crear un elemento form con sus componentes, tener en cuenta que no debe ser un input, sino un texarea.
+Para mostrar automáticamente el nuevo formulario debemos crear un evento en el div creado de añadir tarjeta y crear un elemento form con sus componentes, tener en cuenta que no debe ser un input, sino un texarea. 
 
+Desde la línea 195 se observa como a traves del llamamiento de mi función podemos crear un form con textarea.
 
+```javascript
+
+  	button.addEventListener("click", function(e){
+		e.preventDefault();
+		var contenedorLista = document.createElement("div");
+		contenedorLista.classList.add("d-inlineblock");
+        
+		var remover = nuevoForm.parentNode;
+		contenedor.appendChild(contenedorLista);
+		contenedorLista.appendChild(nuevoForm);
+		contenedorLista.appendChild(agregarForm);
+		remover.remove();
+
+		var contenedorTarjetas = document.createElement("div");
+		contenedorTarjetas.classList.add("trello-body");
+		contenedor.insertBefore(contenedorTarjetas,contenedor.lastElementChild);
+
+		hideElement(nuevoForm,agregarForm);
+
+		crearElementos("div", "nuevaLista", input.value, contenedorTarjetas);
+		crearElementos("div", "agregar", "Añadir una tarjeta", contenedorTarjetas);
+        newForm("form", "fomulario", contenedorTarjetas,contenedor);
+	});
+    
+    function newForm(form, clase, contenedor, agregarTarjeta){
+		var form = document.createElement(form);
+		form.classList.add(clase);
+		crearElementos("textarea","textarea","", form);
+		crearElementos("button", "boton", "Agregar", form);
+		contenedor.appendChild(form);
+
+		form.lastElementChild.addEventListener("click", function(e){
+			e.preventDefault();
+			agregarTarjeta.classList.remove("d-none");
+			form.classList.add("d-none");
+
+			var text = form.firstElementChild.value;
+
+			var div = document.createElement("div");
+			div.classList.add("text-tarjetas");
+			div.innerHTML= text;
+			contenedor.insertBefore(div, agregarTarjeta);
+		});
+	}
+    
+```
+Formulario con textarea:
+
+![Imagen](http://3.1m.yt/aLuZuCJ.png "Imagen")
+
+VERSIÓN 0.0.5 y VERSIÓN 0.0.6
+
+Al dar click en el botón de guardar al momento de añadir tarjeta, mostrar el mensaje de "Añadir tarjeta" debajo de la tarjeta añadida.
+Asegurar la funcionalidad de poder agregar múltiples listas y tarjetas.
+
+####SOLUCIÓN:
+
+####Pseudocódigo
+
+Tenemos que realizar un función que afecte a todos los elementos creados como agregar tarjeta, para eso podemos utilizar la idea de que este sea un array para poder agruparlos, lo podemos lograr usando una clase en común y iterando mediante un for para que sea consecutivo. A partir de la línea 254 se muestra la aplicación:
+
+```javascript
+
+  	button.addEventListener("click", function(e){
+		e.preventDefault();
+		var contenedorLista = document.createElement("div");
+		contenedorLista.classList.add("d-inlineblock");
+        
+		var remover = nuevoForm.parentNode;
+		contenedor.appendChild(contenedorLista);
+		contenedorLista.appendChild(nuevoForm);
+		contenedorLista.appendChild(agregarForm);
+		remover.remove();
+
+		var contenedorTarjetas = document.createElement("div");
+		contenedorTarjetas.classList.add("trello-body");
+		contenedor.insertBefore(contenedorTarjetas,contenedor.lastElementChild);
+
+		hideElement(nuevoForm,agregarForm);
+
+		crearElementos("div", "nuevaLista", input.value, contenedorTarjetas);
+		crearElementos("div", "agregar", "Añadir una tarjeta", contenedorTarjetas);
+
+		/*Para que el form del texarea aparezca debemos aplicar a todos 
+		los divs de agregar tarjeta el mismo formato, por eso le aplicamos
+		a su clase*/ 
+		//el resultado será un array de elementos con la misma clase
+		var agregar = document.getElementsByClassName("agregar");
+		/* var agregar= document.querySelectorAll(".agregar"); puede usarse, pero de
+		preferencia se utiliza el Classname por temas de compatilidad.*/
+		for(var i = 0; i < agregar.length; i++){
+			agregar[i].addEventListener("click", function(){
+				this.classList.add("d-none");
+				newForm("form", "fomulario", contenedorTarjetas,this);
+			});
+		}
+	});
+    
+```
+Div nuevo guardado valor de tarjeta
+
+![Imagen](http://3.1m.yt/LV2JgOW.png "Imagen")
+
+Tarjetas múltiples
+
+![Imagen](http://2.1m.yt/Mrx8pqM.png "Imagen")
 
 
 
