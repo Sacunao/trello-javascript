@@ -1,94 +1,130 @@
-body {
-    margin: 0px;
-    background-color: rgb(0, 121, 191);;
-    font-family: verdana;
+body{
+    background-color: #0079BF;
+    box-sizing: border-box;
 }
-/*----Header----*/
-header {
-    background-color: #0067A3;
-    height: auto;
-    padding: 2em;
-    background-image: url(https://d78fikflryjgj.cloudfront.net/images/50b4ebc64391dc394a38e73aed57f0e2/header-logo.png);
-    background-repeat: no-repeat;
-    background-position: center;
+
+/*---generales/utilities---*/
+.d-inlineblock {
+    display: inline-block;
 }
-/*----Contenido----*/
-#nuevaLista {
-    background-color: #0067A3;
-    padding: 10px;
-    border-radius: 5px;
-    color: white;
-    display: block;
-    width: 15%;
-    cursor: pointer;
-    margin: 1%;
-}
-/*----Formulario----*/
-#boton , .nuevoBoton {
-    margin-top: 10px;
-    background-color: #5EB54A;
-    border-style: none;
-    border-radius: 3px;
-    color: white;
-    padding: 8px;
-    box-shadow: 0 1px 0 #3F6F21;
-    font-weight: bold;
-    font-size: 14px;
-    font-family: helvetica; 
-}
-#texto {
-    background-color: white;
-    padding: 8px 57px 8px 8px;
-    border-style: none;
-    border: 1px solid #AAAAAA;
-    box-shadow: inset 0 1px 8px rgba(0,0,0,.15); 
-    border-radius: 7px;
-    cursor: pointer;
-    font-size: 14px;
-    font-family: helvetica;
-}
-#content {
-    background-color: #E2E4E6;
-    margin: 10px;
-    border-radius: 5px;
-    padding: 5px;
-    width: 237px;
+
+.d-none{
     display: none;
 }
-.lista {
-    background-color: #E2E4E6;
-    margin: 10px;
-    border-radius: 5px;
-    padding: 13px;
-    padding-right: 18px;
-    width: 237px;
+.d-block{
+    display: block;
+}
+
+.negrita{
+    font-weight: 600;
+}
+
+/*----header-----*/
+
+header{
+    width: 100%;   
+    position: fixed;
+    background-color: #0067A3;
     height: auto;
+    text-align: center;
+    color: white;
+    font-size: 2em;
+    font-weight: 600;
+    padding: 0.4em;
 }
-.tarjeta {
-    padding-top: 20px;
-    display: block;
-    text-decoration : none;
-    color: #949494;
-    font-weight: normal;
+
+/*----------Contenedor--------------*/
+#contenedor{
+    white-space: nowrap;
+    padding-top: 56px;
+
 }
-.textBold {
+/*---formato de div para agregar---*/
+
+.lista {
+    width: 17em;
+    height: 3em;
+    margin: 0.6em 0.5em;
+    background-color: #0067A3;
+    padding: 0.6em;
+    color: white;
+    border-radius: 5px;
+}
+
+.nuevaLista{
+    width: 17em;
+    height: 3em;
+    margin: 0.6em 0.5em;
+    background-color: #E2E4E6;
+    padding: 0.6em;
     font-weight: bold;
+    border: 1px dimgrey solid;
+    border-radius: 5px;
 }
-.areaTexto {
-    height: 60px;
-    display: block;
-    resize: none;
-    width: 237px;
-    border : none;
-    border-radius: 3px;
-    margin-top: 10px;
+
+.agregar {
+    width: 17em;
+    height: 3em;
+    margin: 0.6em 0.5em;
+    background-color: #E2E4E6;
+    padding: 0.6em;
+    border-radius: 5px;
 }
-.areaTarjeta {
-    width: 237px;
-    resize: none;
-    border:none;
-    border-radius: 3px;
+
+.text-tarjetas {
+    width: 17em;
+    height: 3em;
+    margin: 0.6em 0.5em;
+    background-color: white;
+    padding: 0.6em;
+    border-radius: 5px;
+}
+
+.agregar:hover{
+    background-color: grey;
+}
+
+/*---Trellos body---*/
+
+.trello-body{
+    padding: 0.5em;
+    margin: 0.5em;
+    width: 19em;
+    background-color: #E2E4E6;
+    vertical-align: top;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/*---formulario---*/
+.formulario {
+    width: 17em;
+    height: auto;
+    margin: 0.6em 0.5em;
+    padding: 0.3em;
+    background-color: #E2E4E6;
+    border-radius: 5px;
+}
+.entrada {
+    width: 90%;
+    margin: 0.3em 0.7em;
+    padding: 0.3em;
+    border-radius: 5px;
+}
+
+.boton {
     display: block;
-    margin-top: 15px;
-    padding: 5px;
+    padding: 0.5em 5.1em;
+    margin: 0.3em 0.7em;
+    background-color: #5BAE45;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
+
+.textarea{
+    width: 90%;
+    margin: 0.3em 0.7em;
+    padding: 0.3em;
+    border-radius: 5px;
 }
