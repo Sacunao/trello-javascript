@@ -339,5 +339,38 @@ Para agregar estilo a mi tarjeta le agrego la clase, le dare un agregar lista en
 
 ![Imagen](http://3.1m.yt/E9DfDhV.png "Imagen")
 
+##VERSIÓN 0.1.2
+
+Agregar un estilo a la lista cuando la tarjeta esté pasando por encima (dragover).
+
+####SOLUCIÓN:
+
+####Pseudocódigo
+
+Para agregar estilo a mi tarjeta le agrego la clase, le dare un agregar clase a mi div contenedor en el drag over ya que mi efecto debe suceder cuando mi elemento arrastrable pase por encima del div padre.
+
+```javascript
+    
+    function arrastrarSobreTrello(e) {
+		e.preventDefault();
+		this.classList.add("bg-blue");
+	}
+
+	function dejarTrello(e) {
+		e.preventDefault();
+		this.classList.remove("bg-blue");
+    }
+
+    function terminaArrastrarTrello(e){
+    	this.classList.remove("bg-blue");
+    }
+
+            
+```
+
+Efecto del cuerpo de las Listas cuando se mueve la tarjeta sobre ellos:
+
+![Imagen](http://2.1m.yt/8b0mUUO.png "Imagen")
+
 
 

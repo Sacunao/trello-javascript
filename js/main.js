@@ -87,18 +87,21 @@ window.addEventListener("load", function(){
 
 	function empiezaArrastrar(e) {
 		e.dataTransfer.setData("text", this.id);
-		this.classList.add("opacidad");
-        
-	}   
+		this.classList.add("opacidad");   
+	}
+    
+    
 
 	function arrastrarSobreTrello(e) {
 		e.preventDefault();
-
+		this.classList.add("bg-blue");
 	}
 
 	function dejarTrello(e) {
 		e.preventDefault();
+		this.classList.remove("bg-blue");
     }
+
 
     function soltar(e) {
        e.preventDefault();
@@ -110,10 +113,10 @@ window.addEventListener("load", function(){
        var arrastrado = e.dataTransfer.getData("text");
        var elemento = document.getElementById(arrastrado);
        this.insertBefore(elemento, this.children[1]);
-
     }
 
     function terminaArrastrarTrello(e){
+    	this.classList.remove("bg-blue");
     }
 
 	function terminaArrastrar(e) {
