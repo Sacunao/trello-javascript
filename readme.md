@@ -1,4 +1,4 @@
-#Ejercicio Trello
+#Ejercicio Trello Parte 1
 
 ##VERSIÓN 0.0.1
 
@@ -232,7 +232,7 @@ Asegurar la funcionalidad de poder agregar múltiples listas y tarjetas.
 
 ####Pseudocódigo
 
-Tenemos que realizar un función que afecte a todos los elementos creados como agregar tarjeta, para eso podemos utilizar la idea de que este sea un array para poder agruparlos, lo podemos lograr usando una clase en común y iterando mediante un for para que sea consecutivo. A partir de la línea 254 se muestra la aplicación:
+Tenemos que realizar un función que afecte a todos los elementos creados como agregar tarjeta.
 
 ```javascript
 
@@ -256,19 +256,11 @@ Tenemos que realizar un función que afecte a todos los elementos creados como a
 		crearElementos("div", "nuevaLista", input.value, contenedorTarjetas);
 		crearElementos("div", "agregar", "Añadir una tarjeta", contenedorTarjetas);
 
-		/*Para que el form del texarea aparezca debemos aplicar a todos 
-		los divs de agregar tarjeta el mismo formato, por eso le aplicamos
-		a su clase*/ 
-		//el resultado será un array de elementos con la misma clase
 		var agregar = document.getElementsByClassName("agregar");
-		/* var agregar= document.querySelectorAll(".agregar"); puede usarse, pero de
-		preferencia se utiliza el Classname por temas de compatilidad.*/
-		for(var i = 0; i < agregar.length; i++){
-			agregar[i].addEventListener("click", function(){
-				this.classList.add("d-none");
-				newForm("form", "fomulario", contenedorTarjetas,this);
-			});
-		}
+		agregar[agregar.length-1].addEventListener("click", function(){
+			this.classList.add("d-none");
+			newForm("form", "fomulario", contenedorTarjetas,this);
+		});
 	});
     
 ```
@@ -280,8 +272,43 @@ Tarjetas múltiples
 
 ![Imagen](http://2.1m.yt/Mrx8pqM.png "Imagen")
 
+#Ejercicio Trello Parte 2
 
+##VERSIÓN 0.0.1
 
+Implementar el evento Drag & Drop de las tarjetas para que pueda ser movida entre las listas creadas.
 
+####SOLUCIÓN:
+
+####Pseudocódigo
+Debo volver todo los elementos tarjeta aptos para aplicar el drag, para eso debe agregar el atributo dragable a los elementos que deseo sean movibles, también debo agregar los eventos DnD a las tarjetas y al contenedor.
+
+```javascript
+    
+    contenedorTarjetas.addEventListener("dragleave", dejarTrello);
+    contenedorTarjetas.addEventListener("dragover", arrastrarSobreTrello);
+    contenedorTarjetas.addEventListener("drop", soltarTrello);
+    contenedorTarjetas.addEventListener("dragend", terminaArrastrarTrello);
+    
+    var div = document.createElement("div");
+    div.classList.add("text-tarjetas");
+    div.draggable = true;
+    div.setAttribute("id", "id" + contador);
+    div.innerHTML = text;
+    contador ++;
+    div.addEventListener("dragstart", empiezaArrastrar);
+    div.addEventListener("drop", soltar);
+    div.addEventListener("dragend", terminaArrastrar);          
+    contenedor.insertBefore(div, agregarTarjeta);
+            
+```
+
+Proceso de tarjeta movible entre lista del Trello:
+
+![Imagen](http://4.1m.yt/rQZFBsl.png "Imagen")
+
+![Imagen](http://3.1m.yt/AH4KwRZ.png "Imagen")
+
+![Imagen](http://4.1m.yt/N_w65a.png "Imagen")
 
 

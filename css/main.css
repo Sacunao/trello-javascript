@@ -73,6 +73,28 @@ header{
     border-radius: 5px;
 }
 
+.transicion{
+   transition: all 0.7s ease;
+   transform:scale(1.04);
+}
+
+.receptor{
+    width: 17em;
+    height: 3em;
+    margin: 0.6em 0.5em;
+    background-color: gray;
+    padding: 0.6em;
+    border-radius: 5px;
+}
+
+.opacidad{
+    opacity: 0.5;
+    cursor: pointer;
+}
+.text-tarjetas.over {
+  border: 2px dashed #000;
+}
+
 /*---Trellos body---*/
 
 .trello-body{
@@ -83,6 +105,14 @@ header{
     vertical-align: top;
     border-radius: 5px;
     display: inline-block;
+}
+
+.agrandar{
+    height: 
+}
+
+.bg-blue{
+    background-color: #0067A3;
 }
 
 /*---formulario---*/

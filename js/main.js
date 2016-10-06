@@ -5,9 +5,8 @@ window.addEventListener("load", function(){
 	var input = document.getElementById("input");
 	var nuevoForm = document.getElementById("nuevoForm");
 	var contenedor = document.getElementById("contenedor");
+    var contador = 1;
 
-	/*Declaramos funciones globales de las variables que utilizaremos
-	en mis funnciones reutilizables*/
 	agregarForm.addEventListener("click", function(){
 		hideElement(nuevoForm,agregarForm);
 		input.focus();
@@ -28,6 +27,10 @@ window.addEventListener("load", function(){
 		var contenedorTarjetas = document.createElement("div");
 		contenedorTarjetas.classList.add("trello-body");
 		contenedor.insertBefore(contenedorTarjetas,contenedor.lastElementChild);
+        contenedorTarjetas.addEventListener("dragleave", dejarTrello);
+        contenedorTarjetas.addEventListener("dragover", arrastrarSobreTrello);
+		contenedorTarjetas.addEventListener("drop", soltarTrello);
+		contenedorTarjetas.addEventListener("dragend", terminaArrastrarTrello); 
 
 		hideElement(nuevoForm,agregarForm);
 
@@ -39,6 +42,7 @@ window.addEventListener("load", function(){
 			this.classList.add("d-none");
 			newForm("form", "fomulario", contenedorTarjetas,this);
 		});
+
 	});	
 	
 	function hideElement(a,b){
@@ -69,8 +73,51 @@ window.addEventListener("load", function(){
 
 			var div = document.createElement("div");
 			div.classList.add("text-tarjetas");
-			div.innerHTML= text;
+			div.draggable = true;
+            div.setAttribute("id", "id" + contador);
+			div.innerHTML = text;
+			contador ++;
+   			div.addEventListener("dragstart", empiezaArrastrar);
+			div.addEventListener("drop", soltar);
+			div.addEventListener("dragend", terminaArrastrar);          
 			contenedor.insertBefore(div, agregarTarjeta);
+
 		});
 	}
+
+	function empiezaArrastrar(e) {
+		e.dataTransfer.setData("text", this.id);
+		this.classList.add("opacidad");
+        
+	}   
+
+	function arrastrarSobreTrello(e) {
+		e.preventDefault();
+
+	}
+
+	function dejarTrello(e) {
+		e.preventDefault();
+    }
+
+    function soltar(e) {
+       e.preventDefault();
+
+    }
+    
+    function soltarTrello(e) {
+       e.preventDefault();
+       var arrastrado = e.dataTransfer.getData("text");
+       var elemento = document.getElementById(arrastrado);
+       this.insertBefore(elemento, this.children[1]);
+
+    }
+
+    function terminaArrastrarTrello(e){
+    }
+
+	function terminaArrastrar(e) {
+		this.classList.remove("opacidad");
+	}
+
 });
