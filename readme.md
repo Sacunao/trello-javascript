@@ -274,13 +274,14 @@ Tarjetas múltiples
 
 #Ejercicio Trello Parte 2
 
-##VERSIÓN 0.0.1
+##VERSIÓN 0.1.0
 
 Implementar el evento Drag & Drop de las tarjetas para que pueda ser movida entre las listas creadas.
 
 ####SOLUCIÓN:
 
 ####Pseudocódigo
+
 Debo volver todo los elementos tarjeta aptos para aplicar el drag, para eso debe agregar el atributo dragable a los elementos que deseo sean movibles, también debo agregar los eventos DnD a las tarjetas y al contenedor.
 
 ```javascript
@@ -310,5 +311,33 @@ Proceso de tarjeta movible entre lista del Trello:
 ![Imagen](http://3.1m.yt/AH4KwRZ.png "Imagen")
 
 ![Imagen](http://4.1m.yt/N_w65a.png "Imagen")
+
+##VERSIÓN 0.1.1
+
+Agregar un estilo personalizado a la tarjeta cuando esté siendo arrastrada por el usuario.
+
+####SOLUCIÓN:
+
+####Pseudocódigo
+
+Para agregar estilo a mi tarjeta le agrego la clase, le dare un agregar lista en el momento que entra en el evento de arrastre, y removeré la clase en el momento que termino de ser arrastrado mi elemento.
+
+```javascript
+    
+    function empiezaArrastrar(e) {
+		e.dataTransfer.setData("text", this.id);
+		this.classList.add("opacidad");
+        
+	}   
+
+	function terminaArrastrar(e) {
+		this.classList.remove("opacidad");
+	}
+
+            
+```
+
+![Imagen](http://3.1m.yt/E9DfDhV.png "Imagen")
+
 
 
