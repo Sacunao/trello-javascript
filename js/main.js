@@ -34,21 +34,13 @@ window.addEventListener("load", function(){
 		crearElementos("div", "nuevaLista", input.value, contenedorTarjetas);
 		crearElementos("div", "agregar", "Añadir una tarjeta", contenedorTarjetas);
 
-		/*Para que el form del texarea aparezca debemos aplicar a todos 
-		los divs de agregar tarjeta el mismo formato, por eso le aplicamos
-		a su clase*/ 
-		//el resultado será un array de elementos con la misma clase
 		var agregar = document.getElementsByClassName("agregar");
-		/* var agregar= document.querySelectorAll(".agregar"); puede usarse, pero de
-		preferencia se utiliza el Classname por temas de compatilidad.*/
-		for(var i = 0; i < agregar.length; i++){
-			agregar[i].addEventListener("click", function(){
-				this.classList.add("d-none");
-				newForm("form", "fomulario", contenedorTarjetas,this);
-			});
-		}
-	});
-
+		agregar[agregar.length-1].addEventListener("click", function(){
+			this.classList.add("d-none");
+			newForm("form", "fomulario", contenedorTarjetas,this);
+		});
+	});	
+	
 	function hideElement(a,b){
 		a.classList.toggle("d-none");
 		b.classList.toggle("d-none");
@@ -65,7 +57,6 @@ window.addEventListener("load", function(){
 		var form = document.createElement(form);
 		form.classList.add(clase);
 		crearElementos("textarea","textarea","", form);
-//        document.getElementById("textarea").focus;
 		crearElementos("button", "boton", "Agregar", form);
 		contenedor.appendChild(form);
 
