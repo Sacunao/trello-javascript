@@ -92,9 +92,6 @@ header{
     opacity: 0.5;
     cursor: pointer;
 }
-.text-tarjetas.over {
-  border: 2px dashed #000;
-}
 
 /*---Trellos body---*/
 

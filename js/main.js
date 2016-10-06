@@ -121,6 +121,7 @@ window.addEventListener("load", function(){
 
 	function terminaArrastrar(e) {
 		this.classList.remove("opacidad");
+		this.classList.add("transicion");
 	}
 
 });

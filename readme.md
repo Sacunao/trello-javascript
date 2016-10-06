@@ -372,5 +372,25 @@ Efecto del cuerpo de las Listas cuando se mueve la tarjeta sobre ellos:
 
 ![Imagen](http://2.1m.yt/8b0mUUO.png "Imagen")
 
+##VERSIÓN 0.1.3
+
+Agregar una transición css cuando la tarjeta y/o lista haya sido colocada en una nueva lista.
+
+####SOLUCIÓN:
+
+####Pseudocódigo
+
+Para agregar trancisión agregaré una clase en css con el contenido de mi trancisión 
+
+```javascript
+    
+   function terminaArrastrar(e) {
+    this.classList.remove("opacidad");
+    this.classList.add("transicion");
+	}
+            
+```
+
+
 
 
