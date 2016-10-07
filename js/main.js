@@ -65,7 +65,7 @@
 		var form = document.createElement(form);
 		form.classList.add(clase);
 		crearElementos("textarea","textarea","", form);
-		crearElementos("button", "boton", "Agregar", form);
+		crearElementos("button", "boton", "Añadir", form);
 		contenedor.appendChild(form);
 
 		form.lastElementChild.addEventListener("click", function(e){
