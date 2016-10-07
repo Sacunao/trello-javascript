@@ -16,9 +16,12 @@ body{
 
 header{
     width: 100%;   
+    background-image: url(https://d78fikflryjgj.cloudfront.net/images/50b4ebc64391dc394a38e73aed57f0e2/header-logo.png);
+	background-repeat: no-repeat;
+	background-position: center;
     position: fixed;
     background-color: #0067A3;
-    height: auto;
+    height: 2em;
     text-align: center;
     color: white;
     font-size: 2em;
