@@ -12,6 +12,9 @@ body{
     display: none;
 }
 
+.m-right5{
+    margin-right: 0.5em;
+}
 /*----header-----*/
 
 header{
@@ -45,9 +48,15 @@ header{
     border: none;
 }
 
+.icono-plus{
+    margin-top: 0.6em;
+    background-color: #569BC4;
+    padding: 0.5em 0.5em;
+    border-radius: 5px;
+}
+
 .tableros{
     margin-top: 0.6em;
-    margin-right: 0.5em;
     background-color: #569BC4;
     padding: 0.3em 1em;
     border-radius: 5px;
