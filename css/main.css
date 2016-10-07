@@ -21,18 +21,42 @@ header{
 	background-position: center;
     position: fixed;
     background-color: #0067A3;
-    height: 2em;
+    height: 4em;
     text-align: center;
     color: white;
-    font-size: 2em;
+    font-size: 0.8em;
     font-weight: 600;
     padding: 0.4em;
+}
+
+.nombre{
+    margin-top: 0.6em;
+    background-color: #569BC4;
+    padding: 0.3em 1em;
+    border-radius: 5px;
+}
+
+.buscador{
+    margin-top: 0.6em;
+    background-color: #569BC4;
+    opacity: 0.8;
+    padding: 0.3em 0.5em;
+    border-radius: 5px;
+    border: none;
+}
+
+.tableros{
+    margin-top: 0.6em;
+    margin-right: 0.5em;
+    background-color: #569BC4;
+    padding: 0.3em 1em;
+    border-radius: 5px;
 }
 
 /*----------Contenedor--------------*/
 #contenedor{
     white-space: nowrap;
-    padding-top: 5em;
+    padding-top: 3em;
 
 }
 /*---formato de div para agregar---*/
@@ -147,4 +171,28 @@ header{
     margin: 0.3em 0.7em;
     padding: 0.3em;
     border-radius: 5px;
+}
+
+/*---responsive---*/
+
+@media (max-width: 1024px){
+    
+}
+@media (max-width: 982px){
+
+}
+@media (max-width: 768px){
+    .nombre{
+        display: none;
+    }
+    .buscador{
+        display: none;
+    }
+    .tableros{
+        display: none;
+    }
+}
+
+@media (max-width: 640px){
+
 }
